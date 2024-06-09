@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxnsn7hwvxq2h"]
+
+[ext_resource type="Script" path="res://Scripts/BasicArena.gd" id="1_qmpny"]
+
+[node name="BasicArena" type="Node2D"]
+script = ExtResource("1_qmpny")
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Prefabs/player.tscn")
+spawn_path = NodePath("../oint")
+spawn_limit = 4
+
+[node name="oint" type="Node2D" parent="."]
+position = Vector2(567, 283)

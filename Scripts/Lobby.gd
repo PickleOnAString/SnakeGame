@@ -3,6 +3,7 @@ extends Node
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
+signal game_start
 
 const PORT = 7000
 const DEFAULT_SERVER_IP = "127.0.0.1"
@@ -53,14 +54,13 @@ func remove_multiplayer_peer():
 func load_game(game_scene_path):
 	get_tree().change_scene_to_file(game_scene_path)
 
-
 # Every peer will call this when they have loaded the game scene.
 @rpc("any_peer", "call_local", "reliable")
 func player_loaded():
 	if multiplayer.is_server():
 		players_loaded += 1
 		if players_loaded == players.size():
-			$/root/Game.start_game()
+			game_start.emit()
 			players_loaded = 0
 
 
