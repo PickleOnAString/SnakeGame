@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://08c61mkhugx8"]
+[gd_scene load_steps=2 format=3 uid="uid://08c61mkhugx8"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenu.gd" id="1_3gad8"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3gad8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(2.08165e-12, 50)
@@ -24,6 +27,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="Username" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Username"
+
+[node name="IpAddrres" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Ip adress"
+
 [node name="Join" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
@@ -33,3 +44,7 @@ text = "Join"
 custom_minimum_size = Vector2(2.08165e-12, 50)
 layout_mode = 2
 text = "Host"
+
+[connection signal="text_changed" from="VBoxContainer/Username" to="." method="_on_username_text_changed"]
+[connection signal="pressed" from="VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/Host" to="." method="_on_host_pressed"]

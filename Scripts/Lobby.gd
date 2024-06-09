@@ -22,7 +22,7 @@ func _ready():
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
-func join_game(address = ""):
+func join_game(address: String = ""):
 	if address.is_empty():
 		address = DEFAULT_SERVER_IP
 	var peer = ENetMultiplayerPeer.new()
